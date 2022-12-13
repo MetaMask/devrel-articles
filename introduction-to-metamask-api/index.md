@@ -58,4 +58,34 @@ JSON RPC IMHO, is a really important technology to learn about when first gettin
 - having a good understanding of existing Web2 concepts
 - Smart Contracts ([Solidity](https://docs.soliditylang.org/))
 
+YOu can learn more about the JSON RPC specification at [jsonrpc.org/specification](jsonrpc.org/specification)
 
+
+## A JSON RPC Request and Response Example
+
+Here we have a typical request and response in JSON format.
+
+### Request
+
+We call the [eth_chainId](https://metamask.github.io/api-playground/api-documentation/#eth_chainId) method in MetaMask which does not require any parameter input
+
+```json
+{
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "eth_chainId",
+  "params": []
+}
+```
+
+### Response
+```json
+{
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "eth_chainId",
+  "params": []
+}
+```
+
+And it returns the current chain the user is connected to in the result field.
