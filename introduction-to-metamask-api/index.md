@@ -38,13 +38,7 @@ We can directly access and call the `window.ethereum` object in our developer to
 
 By running the code above in our console, and if we are currently connected to Polygon, we would see ‘0x89’ returned from this method call.
 
-If you’re interested in knowing the various chainIds you can use something like [chainlist](https://chainlist.org) or an online tool like [eserialize](https://eserialize.com/) to convert that hex to a number.
-
-![](./images//03-hex-to-number.pngg)
-
-To do the same thing within your code, you might want to rely on ethers [hexlify](https://docs.ethers.io/v4/api-utils.html) or roll your own solution and create a method that utilizes parseInt from javaScript.
-
-As you get started with using MetaMask API methods, you might want to check out some of our [beginner-level videos](https://www.youtube.com/watch?v=03lbmYrawV8) from our Lead DX Engineer Gui Bibeau that can help get you started working with the MetaMask API.
+As you get started with using MetaMask API methods, you might want to check out some of our [beginner-level videos](https://www.youtube.com/watch?v=03lbmYrawV8) from our Lead DX Engineer [Gui Bibeau](https://twitter.com/guibibeau) that can help get you started working with the MetaMask API.
 
 ## What is JSON RPC?
 
