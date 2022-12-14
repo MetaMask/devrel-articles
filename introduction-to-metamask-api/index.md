@@ -125,17 +125,24 @@ When working in JavaScript it’s easy to call an RPC endpoint using the `window
 As you see here, we just setup that request as an object and call the request method passing a MetaMask API method `eth_chainId`.
 
 ```javascript
-const chainId = await window.ethereum.request({
+const chainIdHex = await window.ethereum.request({
   "method": "eth_chainId",
   "params": []
-});
+})
 
-console.log(chainId)
+console.log(chainIdHex)
 // 0x1
+
+let chainIdNumber = parseInt(chainIdHex, 16)
+console.log(chainIdNumber)
+// 1
 ```
 
-Here we get back the chainId as a hex value.
+Again, we note that we get back the `chainId` back as a hex value. To get this value back as a number for other purposes, we can use JavaScript's `parseInt()` method.
 
+One additional note about the `parseInt` method, a built-in JavaScript function. The first parameter is the number. In the case of Mainnet, this chainId is `1` (represented as a hexadecimal). The second parameter is the base or radix. EVM chains use hexadecimal, and their base is 16.
+
+`parseInt` needs to know the base in order to correctly convert the string containing the chain ID to the correct number. If the chainId string starts with 0x (e.g. `0x1`), then parseInt can correctly tell what the base is (`16`). However, this is not always the case, so `16` is manually passed in to ensure that the correct base is being used.
 
 ## What is Open RPC?
 
