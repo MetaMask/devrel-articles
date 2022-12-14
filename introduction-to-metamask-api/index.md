@@ -67,7 +67,7 @@ Here we have a typical request and response in JSON format.
 
 ### Request
 
-We call the [eth_chainId](https://metamask.github.io/api-playground/api-documentation/#eth_chainId) method in MetaMask which does not require any parameter input
+We call the [eth_chainId](https://metamask.github.io/api-playground/api-documentation/#eth_chainId) method in MetaMask which does not require any parameter input. A request is like a function call and takes either zero or many params that we can act on for the resulting response.
 
 ```json
 {
@@ -77,15 +77,66 @@ We call the [eth_chainId](https://metamask.github.io/api-playground/api-document
   "params": []
 }
 ```
+
+**What is ID for:** This is a unique ID so a client can relate responses back to their originating request
+Like when using web sockets in the context of http this is less relevant, but for batching requests this is essential.
+**What is jsonrpc:** This indicates the version of JSONRPC you are you using.
 
 ### Response
 ```json
 {
-  "id": 0,
   "jsonrpc": "2.0",
-  "method": "eth_chainId",
-  "params": []
+  "result": "0x1",
+  "id": 0
 }
 ```
 
-And it returns the current chain the user is connected to in the result field.
+And it returns the current chain the user is connected to in the result field. We can determine this is mainnet as the number 1 is really easy to read in hex value, but other chainIds returned as hex value are more difficult to read. When we get to our [Essential Tools](#essential-tools) section we will show you some online tools as well as libraries that can help you to easily convert hex to number.
+
+JSON RPC is simple. above, we are calling MetaMask API methods, but you can also call custom RPC endpoints. In our next example, we are looking at a custom RPC endpoint that simply returns a list of chains.
+
+### Request
+```json
+{
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "list_chains",
+  "params": [1]
+}
+```
+
+It takes a parameter that represents the number of chains we want returned. For simplicity we are just returning one.
+
+### Response
+```json
+{
+  "id": 0
+  "jsonrpc": "2.0",
+  "result": [{
+    "chain": "Ethereum Mainnet",
+    "chainId": "0x1"
+  }]
+}
+```
+
+Notice that the response is actually an array of chains.
+
+When working in JavaScript it’s easy to call an RPC endpoint using the `window.ethereum` object in your Dapp, which is connected to an RPC provider in MetaMask. 
+As you see here, we just setup that request as an object and call the request method passing a MetaMask API method `eth_chainId`.
+
+```javascript
+const chainId = await window.ethereum.request({
+  "method": "eth_chainId",
+  "params": []
+});
+
+console.log(chainId)
+// 0x1
+```
+
+Here we get back the chainId as a hex value.
+
+
+## What is Open RPC?
+
+
