@@ -4,14 +4,14 @@ If you are planning to integrate identity and transactions into your Web3 applic
 
 ## TOC
 
-[What is the MetaMask API?](#what-is-the-metamask-api)  
-[What is JSON RPC?](#what-is-json-rpc)  
-[Essential Tools](#essential-tools)  
-[MetaMask Documentation](#metamask-documentation)  
-[MetaMask API Playground](#metamask-api-playground)  
-[Examples of Usage](#examples-of-usage)  
-[RPC](#rpc)  
-[Smart Contracts](#smart-contracts)  
+- [What is the MetaMask API?](#what-is-the-metamask-api)  
+- [What is JSON RPC?](#what-is-json-rpc)  
+- [Essential Tools](#essential-tools)  
+  - [MetaMask Documentation](#metamask-documentation)  
+  - [MetaMask API Playground](#metamask-api-playground)  
+- [Examples of Usage](#examples-of-usage)  
+- [RPC](#rpc)  
+- [Smart Contracts](#smart-contracts)  
 
 ## What is the MetaMask API?
 
@@ -58,8 +58,7 @@ JSON RPC IMHO, is a really important technology to learn about when first gettin
 - having a good understanding of existing Web2 concepts
 - Smart Contracts ([Solidity](https://docs.soliditylang.org/))
 
-YOu can learn more about the JSON RPC specification at [jsonrpc.org/specification](jsonrpc.org/specification)
-
+You can learn more about the JSON RPC specification at [jsonrpc.org/specification](jsonrpc.org/specification)
 
 ## A JSON RPC Request and Response Example
 
@@ -164,7 +163,7 @@ An OpenRPC doc as a whole expresses how to use it and what you will get back wit
 
 Similar to what interface descriptions have done for lower-level programming, the OpenRPC Specification removes guesswork in calling a JSON-RPC service.
 
-That's it at a high level, but if you want to deep dive into OpenRPC more, I suggest checking out [ZaneStarr](https://twitter.com/zanecstarr)'s [Introduction to OpenRPC](https://www.youtube.com/watch?v=9UiKQ1zasjE) session from the [API Specification COnference 2022](https://www.youtube.com/playlist?list=PLcx_iGeB-NxgMrrMMPp3LKQmIixm5g3Q_).
+That's a good high level overview, but if you want to deep dive into OpenRPC I suggest checking out [ZaneStarr](https://twitter.com/zanecstarr)'s [Introduction to OpenRPC](https://www.youtube.com/watch?v=9UiKQ1zasjE) session from the [API Specification Conference 2022](https://www.youtube.com/playlist?list=PLcx_iGeB-NxgMrrMMPp3LKQmIixm5g3Q_).
 
 ## Essential Tools
 
@@ -174,4 +173,37 @@ This section highlight a few tools that can help you when dealing with:
 - Creating an Open RPC Spec
 - Working with MetaMask API
 - Interacting with MetaMask using Smart Contracts
+
+### Links to Tools
+
+When building with MetaMask a great resource for the injected window.ethereum object is our corresponding Ethereum Provider API docs.
+Want to know about all of the `eth_` and `wallet_` methods supported by MetaMask? 
+
+- [The Ethereum Provider](https://docs.metamask.io/guide/ethereum-provider.html "A link to our MetaMask docs that outline the Ethereum provider")
+
+Check the corresponding RPC API docs that have information on methods we call from our JS code like `eth_requestAccounts`, `wallet_addEthereumChain`, or `wallet_switchEthereumChain`. Maybe you need to add a network/chain to MetaMask adn switch your users to that chain, you can find documentation and code to show you how to do that here:
+
+- [MetaMask RPC API](https://docs.metamask.io/guide/rpc-api.html#table-of-contents "A link to our MetaMask docs outlining the MetaMask RPC API")
+
+The next link will allow you to connect a wallet and try these RPC API calls in the browser, we plan on merging the playground with a future version of our docs.
+
+- [MetaMask API Playground](https://metamask.github.io/api-playground/ "Connect a wallet and test the MetaMask RPC API")
+
+Chainlink maintains a site called chainlist.org and it’s a great resource for network/chain information, I often browse the site just looking for the various Ethereum networks and testnets, their chainIds and the other information needed to connect to them. There are other sources for this information as well, but this is a good hack for quickly finding that information as well as RPC Server Addresses for each chain with information about their latency and privacy. You can add and switch to any chain in the list when MetaMask confirmation pops up you can see what information is needed to add that chain to MetaMask.
+
+- [Chainlist](https://chainlist.org "Find Ethereum Networks and Chains and add to MetaMask")
+
+Below is an example using Chainlist, I can see Fantom Opera (mainnet), it's chainId and I can add to MetaMask and in the confirmation see the information used to add the network to my wallet.
+
+![](./images//15-chainlist.png)
+
+- [eserialize](https://eserialize.com/ "Serialize and deserialize the Ethereum Stack")
+
+Eserialize is a tool that can serialize and deserialize the hex to string or number to hex or the other way around, below is an example of how to use it for something simple like verifying the chainId's hex string to the number listed on chainlist.org.
+
+![](./images/03-hex-to-number.png)
+
+You can find a lot of other cool Metamask related information and tools from this [MetaMask Resources Guide](https://dev.to/httpjunkie/metamask-52bj)
+
+## Examples of Usage
 
