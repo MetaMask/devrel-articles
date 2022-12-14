@@ -140,10 +140,38 @@ console.log(chainIdNumber)
 
 Again, we note that we get back the `chainId` back as a hex value. To get this value back as a number for other purposes, we can use JavaScript's `parseInt()` method.
 
-One additional note about the `parseInt` method, a built-in JavaScript function. The first parameter is the number. In the case of Mainnet, this chainId is `1` (represented as a hexadecimal). The second parameter is the base or radix. EVM chains use hexadecimal, and their base is 16.
+One additional note about the `parseInt` method, a built-in JavaScript function. The first parameter is the number. In the case of Mainnet, this chainId is `1` (represented as a hexadecimal). The second parameter is the base or radix. EVM chains use hexadecimal, and their base is `16`.
 
-`parseInt` needs to know the base in order to correctly convert the string containing the chain ID to the correct number. If the chainId string starts with 0x (e.g. `0x1`), then parseInt can correctly tell what the base is (`16`). However, this is not always the case, so `16` is manually passed in to ensure that the correct base is being used.
+The `parseInt` method needs to know the base in order to correctly convert the string containing the chain ID to the correct number. If the chainId string starts with 0x (e.g. `0x1`), then parseInt can correctly tell what the base is (`16`). However, this is not always the case, so `16` is manually passed in to ensure that the correct base is being used.
 
 ## What is Open RPC?
 
+The OpenRPC Specification defines a standard, programming language-agnostic interface description for [JSON-RPC 2.0](https://www.jsonrpc.org/specification) APIs. An ADL (API Description Language) for JSON-RPC APIs
+
+### The OpenRPC Specification
+
+- Language agnostic interface description
+- Discover capabilities of a service w/out source or docs
+- Ability to interact with a remote service w/ minimal implementation logic
+- Similar to interface descriptions for lower-level programming langs
+- Removes guesswork in calling JSON-RPC services
+
+Think of OpenRPC like a [Open API/Swagger](https://swagger.io/specification/) but for JSON-RPC APIs (it’s a specification/tool)
+
+It’s a human readable format for the exchange of capabilities. In other words, it allows humans and computers to discover and understand the capabilities of a service without access to its source code, documentation, or inspection of network traffic.
+
+An OpenRPC doc as a whole expresses how to use it and what you will get back with docs for examples and errors. When defined via OpenRPC, a consumer can understand and interact with the remote service requiring minimal implementation logic and you can share logic patterns across use cases. 
+
+Similar to what interface descriptions have done for lower-level programming, the OpenRPC Specification removes guesswork in calling a JSON-RPC service.
+
+That's it at a high level, but if you want to deep dive into OpenRPC more, I suggest checking out [ZaneStarr](https://twitter.com/zanecstarr)'s [Introduction to OpenRPC](https://www.youtube.com/watch?v=9UiKQ1zasjE) session from the [API Specification COnference 2022](https://www.youtube.com/playlist?list=PLcx_iGeB-NxgMrrMMPp3LKQmIixm5g3Q_).
+
+## Essential Tools
+
+This section highlight a few tools that can help you when dealing with:
+
+- Testing JSON RPC servers
+- Creating an Open RPC Spec
+- Working with MetaMask API
+- Interacting with MetaMask using Smart Contracts
 
