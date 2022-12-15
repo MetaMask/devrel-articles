@@ -11,7 +11,7 @@ If you are planning to integrate identity and transactions into your Web3 applic
   - [MetaMask API Playground](#metamask-api-playground)  
 - [Examples of Usage](#examples-of-usage)  
 - [RPC](#rpc)  
-- [Smart Contracts](#smart-contracts)  
+- [Smart Contract Example](#smart-contract-example)  
 
 ## What is the MetaMask API?
 
@@ -199,3 +199,77 @@ You can find a lot of other cool Metamask related information and tools from thi
 
 ## Examples of Usage
 
+The MetaMask Playground lists JSON-RPC methods we support in our API.
+
+![](./images//04-api-playground.png)
+
+The majority of the methods are prefixed with `wallet_` or `eth_`.
+
+Some of the more popular and IMO most used methods are:
+
+- eth_accounts
+- eth_chainId
+- wallet_addEthereum
+- wallet_switchEthereumChain
+
+## Smart Contract Example
+
+If we wanted to call a smart contract function that has a payable keyword to receive ether, below is an example of how you might trigger MetaMask from a Smart Contract:
+
+```typescript
+contract MyNFT {
+  uint256 public totalSupply;
+  uint256 public maxSupply;
+  mapping(uint256 => address) public tokenOwners;
+
+  function mint(uint256 tokenId) public payable {
+    require(totalSupply + 1 <= maxSupply, "Cannot mint more tokens: maximum supply reached");
+    require(tokenOwners[tokenId] == address(0), "Token ID already in use");
+    tokenOwners[tokenId] = msg.sender;
+    totalSupply++;
+  }
+}
+```
+
+With the `payable` keyword added, this `mint()` function can be called with a transaction that includes a payment. The amount of Ether sent with the transaction will be available to the function as the msg.value parameter. Note that you may also need to add additional logic to the function to handle the received Ether, such as transferring it to a contract owner's account.
+
+The function takes a `uint256` parameter representing the unique token ID of the NFT to be minted. The function first checks if the `totalSupply` will be greater than the `maxSupply` after minting the new token. If this is the case, the function will revert with an error message. The function then checks if the specified token ID is already in use. If the token ID is already in use, the function will revert with an error message. Otherwise, the function will update the token ownership mapping to assign the token to the caller of the function (using the `msg.sender` variable) and increment the `totalSupply`.
+
+We could then call this function in our smart contract through a React component that might look something like this:
+
+```javascript
+const MintingPage = ({nft}) => {
+
+  const [isMinting, setIsMinting] = useState(false)
+  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
+  const { user, nftContract, chainId } = useContext(MetaMaskContext)
+  const { address } = user
+
+  const mintNFT = async () => {
+    console.log("start minting")
+    setIsMinting(true)
+
+    nftContract.mint({
+      from: address,
+      value: nft.priceHexValue
+    })
+    .then(async(tx) => {
+      await tx.await()
+      console.lgo(`minting complete, mined: ${tx}`)
+      setIsMinting(false)
+    })
+    .catch((error) => {
+      console.log(error)
+      setError(true)
+      setErrorMessage(error?.message)
+      setIsMinting(false)
+    })
+  }
+}
+```
+We use the `await` keyword to wait for the transaction to be mined on the blockchain before continuing with the execution of the code.
+
+the `.then` and `.catch` syntax is used to handle the result of the transaction. If the transaction is successful, the `.then` block will be executed. If the transaction fails, the `.catch` block will be executed, and the component's state will be updated with an error message.
+
+the `mint` function calls the `mint` method on the contract and then waits for the transaction to be mined using the `wait` method. This will ensure that the `mint` function does not continue executing until the transaction has been successfully mined on the blockchain. This can be useful to ensure that the state of the contract is updated before the rest of the code continues executing.
