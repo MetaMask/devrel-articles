@@ -131,11 +131,9 @@ console.log(chainIdNumber)
 // 1
 ```
 
-Again, we note that we get the `chainId` back as a hex value. To convert it to a number for other purposes, we can use JavaScript's `parseInt()` method.
+Again, we note that we get the `chainId` back as a hex value. In this example, the chainId variable contains the string representation of an Ethereum chain ID in hexadecimal format (prefixed with `0x`). The `parseInt` function is used to convert this string to an integer by specifying the base as `16` (hexadecimal). This returns the numerical equivalent of the Ethereum chain ID, which is `1` in this case.
 
-A note about the `parseInt` JavaScript method. The first parameter is the Mainnet Ethereum chainId (`1` represented as a hexadecimal). The second parameter is the base (or radix). EVM chains use hexadecimal, and their base is `16`.
-
-The `parseInt` method needs to know the base in order to correctly convert the string containing the chain ID to the correct number. If the chainId string starts with 0x (e.g. `0x1`), then parseInt can correctly tell what the base is (`16`). However, this is not always the case, so `16` is manually passed in to ensure that the correct base is being used.
+Note that this is just an example, and the exact implementation will depend on the specific context and use case. You may need to handle errors and exceptions, such as when the input string is not a valid hexadecimal number, or when the input is not a valid Ethereum chain ID.
 
 ## What is Open RPC?
 
@@ -153,9 +151,9 @@ Think of OpenRPC like a [Open API/Swagger](https://swagger.io/specification/) bu
 
 It’s a human readable format for the exchange of capabilities. In other words, it allows humans and computers to discover and understand the capabilities of a service without access to its source code, documentation, or inspection of network traffic.
 
-An OpenRPC doc as a whole expresses how to use it and what you will get back with docs for examples and errors. When defined via OpenRPC, a consumer can understand and interact with the remote service requiring minimal implementation logic and you can share logic patterns across use cases. 
+OpenRPC provides a standardized way to describe the structure and parameters of an API, as well as the types and formats of the data that it accepts and returns. This allows developers to create APIs that can be easily understood and integrated by other developers, without having to spend time and effort on learning the details of each individual API.
 
-Similar to what interface descriptions have done for lower-level programming, the OpenRPC Specification removes guesswork in calling a JSON-RPC service.
+For example, if a developer wants to create an API that allows users to interact with the Ethereum blockchain, they can use OpenRPC to define the API in a way that is consistent with other Ethereum-related APIs. This makes it easier for other developers to understand and use the API, and allows them to integrate it into their own applications without having to spend time on learning the details of the API's implementation.
 
 That's a good high level overview, but if you want to deep dive into OpenRPC I suggest checking out [ZaneStarr](https://twitter.com/zanecstarr)'s [Introduction to OpenRPC](https://www.youtube.com/watch?v=9UiKQ1zasjE) session from the [API Specification Conference 2022](https://www.youtube.com/playlist?list=PLcx_iGeB-NxgMrrMMPp3LKQmIixm5g3Q_).
 
