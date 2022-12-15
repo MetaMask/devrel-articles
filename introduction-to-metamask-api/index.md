@@ -207,12 +207,108 @@ The majority of the methods are prefixed with `wallet_` or `eth_`.
 
 Some of the more popular and IMO most used methods are:
 
-- eth_accounts
-- eth_chainId
-- wallet_addEthereum
-- wallet_switchEthereumChain
+- eth_accounts : get accounts and wallet addresses
+- eth_chainId : returns current chain id as hex
+- wallet_addEthereumChain : Adding an Ethereum chain
+- wallet_switchEthereumChain : Switch user to the correct chain
+- contract.mint) : Call smart contract function that initiates transaction on the blockchain triggering MetaMask for the user
 
-## Smart Contract Example
+The following examples use the MetaMask API playground
+
+When you expand each method you have information about params and results and each method example can be inspected and run in the browser. 
+
+Here we are testing the eth_accounts method to obtain the connected account:
+
+![](./images/05-api-playground-example-a.png)
+
+Next is an example calling `eth_chainId` which will return the current chainId of the network we are connected to:
+
+![](./images/07-api-playground-example-eth-chainid.png)
+
+Another widely used method is `wallet_addEthereumChain`
+
+This allows dapps to suggest chains to be added to the user’s wallet. 
+
+Just specify a chain ID and some chain metadata. 
+The wallet application may arbitrarily refuse or accept the request. `null` is returned if the chain was added, and errors otherwise. 
+
+This API endpoint was introduced by [EIP 3085](https://eips.ethereum.org/EIPS/eip-3085).
+
+![](./images/08-api-playground-example-add-ethereum-chain.png)
+
+Here is what the user sees when adding a chain:
+
+![](./images/09-add-network-dialogue.png)
+
+This next API method switches its active Ethereum chain. Introduced by [EIP 3326](https://eips.ethereum.org/EIPS/eip-3326).
+
+![](./images/10-switch-ethereum-chain.png)
+
+The user will see a dialogue similar to the one below:
+
+![](./images/10-switch-ethereum-chain.png)
+
+NOTE: This method will throw an error if you do not have the chain that you are trying to switch to already added to the users wallet.
+
+For this reason, when we want to switch the user to another chain in the Dapp, we can combine the `wallet_addEthereumChain` and `wallet_switchEthereumChain` methods in a try / catch.
+
+Let's take a look at the code yu might write in order to add/switch the Ethereum chain to Polygon Mainnet in a React component:
+
+```javascript
+import { useContext } from 'react'
+import { MetaMaskContext } from '../../../context/MetaMaskProvider'
+import MyButton from '../atoms/MyButton'
+
+const ConnectNetwork = () => {
+  const { provider } = useContext(MetaMaskContext)
+
+  const addSwitchNetwork = async () => {
+    if (provider) {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x4' }],
+        })
+      } catch (error) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+              {
+                chainId: '0x313337',
+                blockExplorerUrls: ['https://polygonscan.com/'],
+                chainName: 'Polygon Mainnet',
+                nativeCurrency: {
+                  decimals: 18,
+                  name: 'Polygon',
+                  symbol: 'MATIC'
+                },
+                rpcUrls: ['https://polygon-rpc.com']
+              },
+            ],
+          })
+        } catch (error) {
+          // user rejects the request to "add chain" or param values are wrong, maybe you didn't use hex above for `chainId`?
+          console.log(`wallet_addEthereumChain Error: ${error.message}`)
+        }
+        // handle other "switch" errors
+      }
+    }
+  }
+
+  return (
+    <MyButton handleClick={addSwitchNetwork}>
+      <p>Connect Rinkeby</p>
+    </MyButton>
+  )
+}
+
+export default ConnectNetwork
+```
+
+The code above assumes that you are using some type of Context API component to track the wallet state and provide it to the components in your app, but if you are not using React you can focus on the try/catch portion of the code and modify it to fit your application.
+
+### Smart Contract Example
 
 If we wanted to call a smart contract function that has a payable keyword to receive ether, below is an example of how you might trigger MetaMask from a Smart Contract:
 
