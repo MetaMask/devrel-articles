@@ -7,10 +7,13 @@ If you are planning to integrate identity and transactions into your Web3 applic
 - [What is the MetaMask API?](#what-is-the-metamask-api)  
 - [What is JSON RPC?](#what-is-json-rpc)  
 - [Essential Tools](#essential-tools)  
-  - [MetaMask Documentation](#metamask-documentation)  
+  - [Ethereum Provider](#ethereum-provider)  
+  - [MetaMask RPC API](#metamask-rpc-api)
   - [MetaMask API Playground](#metamask-api-playground)  
+  - [Chainlist](#chainlist)
+  - [Eserialize](#eserialize)
+  - [More MetaMask Resources](#more-metamask-resources)
 - [Examples of Usage](#examples-of-usage)  
-- [RPC](#rpc)  
 - [Smart Contract Example](#smart-contract-example)  
 
 ## What is the MetaMask API?
@@ -169,19 +172,27 @@ This section highlight a few tools that can help you when dealing with:
 ### Links to Tools
 
 When building with MetaMask a great resource for the injected window.ethereum object is our corresponding Ethereum Provider API docs.
-Want to know about all of the `eth_` and `wallet_` methods supported by MetaMask? 
+Want to know about all of the `eth_` and `wallet_` methods supported by MetaMask?
+
+### Ethereum Provider
 
 - [The Ethereum Provider](https://docs.metamask.io/guide/ethereum-provider.html "A link to our MetaMask docs that outline the Ethereum provider")
 
 Check the corresponding RPC API docs that have information on methods we call from our JS code like `eth_requestAccounts`, `wallet_addEthereumChain`, or `wallet_switchEthereumChain`. Maybe you need to add a network/chain to MetaMask adn switch your users to that chain, you can find documentation and code to show you how to do that here:
 
+### MetaMask RPC API
+
 - [MetaMask RPC API](https://docs.metamask.io/guide/rpc-api.html#table-of-contents "A link to our MetaMask docs outlining the MetaMask RPC API")
 
 The next link will allow you to connect a wallet and try these RPC API calls in the browser, we plan on merging the playground with a future version of our docs.
 
+### MetaMask API Playground
+
 - [MetaMask API Playground](https://metamask.github.io/api-playground/ "Connect a wallet and test the MetaMask RPC API")
 
 Chainlink maintains a site called chainlist.org and it’s a great resource for network/chain information, I often browse the site just looking for the various Ethereum networks and testnets, their chainIds and the other information needed to connect to them. There are other sources for this information as well, but this is a good hack for quickly finding that information as well as RPC Server Addresses for each chain with information about their latency and privacy. You can add and switch to any chain in the list when MetaMask confirmation pops up you can see what information is needed to add that chain to MetaMask.
+
+### Chainlist
 
 - [Chainlist](https://chainlist.org "Find Ethereum Networks and Chains and add to MetaMask")
 
@@ -189,11 +200,15 @@ Below is an example using Chainlist, I can see Fantom Opera (mainnet), it's chai
 
 ![](./images//15-chainlist.png)
 
+### Eserialize
+
 - [eserialize](https://eserialize.com/ "Serialize and deserialize the Ethereum Stack")
 
 Eserialize is a tool that can serialize and deserialize the hex to string or number to hex or the other way around, below is an example of how to use it for something simple like verifying the chainId's hex string to the number listed on chainlist.org.
 
 ![](./images/03-hex-to-number.png)
+
+### More MetaMask Resources
 
 You can find a lot of other cool Metamask related information and tools from this [MetaMask Resources Guide](https://dev.to/httpjunkie/metamask-52bj)
 
@@ -207,11 +222,11 @@ The majority of the methods are prefixed with `wallet_` or `eth_`.
 
 Some of the more popular and IMO most used methods are:
 
-- eth_accounts : get accounts and wallet addresses
-- eth_chainId : returns current chain id as hex
-- wallet_addEthereumChain : Adding an Ethereum chain
-- wallet_switchEthereumChain : Switch user to the correct chain
-- contract.mint) : Call smart contract function that initiates transaction on the blockchain triggering MetaMask for the user
+- `eth_accounts` : get accounts and wallet addresses
+- `eth_chainId` : returns current chain id as hex
+- `wallet_addEthereumChain` : Adding an Ethereum chain
+- `wallet_switchEthereumChain` : Switch user to the correct chain
+- `contract.mint` : Call smart contract function that initiates transaction on the blockchain triggering MetaMask for the user
 
 The following examples use the MetaMask API playground
 
@@ -291,7 +306,6 @@ const ConnectNetwork = () => {
           // user rejects the request to "add chain" or param values are wrong, maybe you didn't use hex above for `chainId`?
           console.log(`wallet_addEthereumChain Error: ${error.message}`)
         }
-        // handle other "switch" errors
       }
     }
   }
