@@ -12,7 +12,6 @@ If you are planning to integrate identity and transactions into your Web3 applic
   - [MetaMask API Playground](#metamask-api-playground)  
   - [Chainlist](#chainlist)
   - [Eserialize](#eserialize)
-  - [More MetaMask Resources](#more-metamask-resources)
 - [Examples of Usage](#examples-of-usage)  
 - [Smart Contract Example](#smart-contract-example)  
 
@@ -63,7 +62,7 @@ Here we have a typical request and response in JSON format.
 
 ### Request
 
-We call the [eth_chainId](https://metamask.github.io/api-playground/api-documentation/#eth_chainId) method in MetaMask which does not require any parameter input. A request is like a function call and takes either zero or many params that we can act on for the resulting response.
+We call the [eth_chainId](https://metamask.github.io/api-playground/api-documentation/#eth_chainId) method in MetaMask, which does not require any parameter input. A request is like a function call and takes either zero or many params that we can act on for the resulting response.
 
 ```json
 {
@@ -87,7 +86,7 @@ Like when using web sockets in the context of http this is less relevant, but fo
 }
 ```
 
-And it returns the current chain the user is connected to in the result field. We can determine this is mainnet as the number 1 is really easy to read in hex value, but other chainIds returned as hex value are more difficult to read. When we get to our [Essential Tools](#essential-tools) section we will show you some online tools as well as libraries that can help you to easily convert hex to number.
+And it returns the current chain the user is connected to in the result field. We can determine this is mainnet as the number 1 is really easy to read in hex value, but other chainIds returned as hex value are more difficult to read. In the JavaScript example below we will work on converting that hexadecimal value to a number.
 
 JSON RPC is simple. above, we are calling MetaMask API methods, but you can also call custom RPC endpoints. In our next example, we are looking at a custom RPC endpoint that simply returns a list of chains.
 
@@ -152,13 +151,13 @@ The OpenRPC Specification defines a standard, programming language-agnostic inte
 
 Think of OpenRPC like a [Open API/Swagger](https://swagger.io/specification/) but for JSON-RPC APIs (it’s a specification/tool)
 
-It’s a human readable format for the exchange of capabilities. In other words, it allows humans and computers to discover and understand the capabilities of a service without access to its source code, documentation, or inspection of network traffic.
+It’s a human-readable format for the exchange of capabilities. In other words, it allows humans and computers to discover and understand the capabilities of a service without access to its source code, documentation, or inspection of network traffic.
 
 OpenRPC provides a standardized way to describe the structure and parameters of an API, as well as the types and formats of the data that it accepts and returns. This allows developers to create APIs that can be easily understood and integrated by other developers, without having to spend time and effort on learning the details of each individual API.
 
 For example, if a developer wants to create an API that allows users to interact with the Ethereum blockchain, they can use OpenRPC to define the API in a way that is consistent with other Ethereum-related APIs. This makes it easier for other developers to understand and use the API, and allows them to integrate it into their own applications without having to spend time on learning the details of the API's implementation.
 
-That's a good high level overview, but if you want to deep dive into OpenRPC I suggest checking out [ZaneStarr](https://twitter.com/zanecstarr)'s [Introduction to OpenRPC](https://www.youtube.com/watch?v=9UiKQ1zasjE) session from the [API Specification Conference 2022](https://www.youtube.com/playlist?list=PLcx_iGeB-NxgMrrMMPp3LKQmIixm5g3Q_).
+That's a high level overview, but if you want to deep dive into OpenRPC I suggest checking out [ZaneStarr](https://twitter.com/zanecstarr)'s [Introduction to OpenRPC](https://www.youtube.com/watch?v=9UiKQ1zasjE) session from the [API Specification Conference 2022](https://www.youtube.com/playlist?list=PLcx_iGeB-NxgMrrMMPp3LKQmIixm5g3Q_).
 
 ## Essential Tools
 
@@ -171,7 +170,7 @@ This section highlight a few tools that can help you when dealing with:
 
 ### Links to Tools
 
-When building with MetaMask a great resource for the injected window.ethereum object is our corresponding Ethereum Provider API docs.
+When building with MetaMask a great resource for the injected `window.ethereum` object is our corresponding Ethereum Provider API docs.
 Want to know about all of the `eth_` and `wallet_` methods supported by MetaMask?
 
 ### Ethereum Provider
@@ -190,7 +189,9 @@ The next link will allow you to connect a wallet and try these RPC API calls in 
 
 - [MetaMask API Playground](https://metamask.github.io/api-playground/ "Connect a wallet and test the MetaMask RPC API")
 
-Chainlink maintains a site called chainlist.org and it’s a great resource for network/chain information, I often browse the site just looking for the various Ethereum networks and testnets, their chainIds and the other information needed to connect to them. There are other sources for this information as well, but this is a good hack for quickly finding that information as well as RPC Server Addresses for each chain with information about their latency and privacy. You can add and switch to any chain in the list when MetaMask confirmation pops up you can see what information is needed to add that chain to MetaMask.
+Chainlink maintains a site called chainlist.org, and it’s a great resource for network/chain information. I often browse the site just looking for the various Ethereum networks and testnets, their chainIds, and the other information needed to connect to them. There are other sources for this information as well, but this is a good hack for quickly finding that information and RPC Server Addresses for each chain with information about their latency and privacy. 
+
+You can add and switch to any chain in the list when MetaMask confirmation pops up you can see what information is needed to add that chain to MetaMask.
 
 ### Chainlist
 
@@ -207,10 +208,6 @@ Below is an example using Chainlist, I can see Fantom Opera (mainnet), it's chai
 Eserialize is a tool that can serialize and deserialize the hex to string or number to hex or the other way around, below is an example of how to use it for something simple like verifying the chainId's hex string to the number listed on chainlist.org.
 
 ![](./images/03-hex-to-number.png)
-
-### More MetaMask Resources
-
-You can find a lot of other cool Metamask related information and tools from this [MetaMask Resources Guide](https://dev.to/httpjunkie/metamask-52bj)
 
 ## Examples of Usage
 
