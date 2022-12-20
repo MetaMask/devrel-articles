@@ -1,6 +1,6 @@
 # Introduction to the MetaMask dApp API
 
-If you are planning to integrate identity and transactions into your Web3 applications, getting acclimated with the MetaMask API is a great way to start learning the capabilities afforded to you working with the MetaMask Extension and learning your way around the Web3 stack in general.
+If you are planning to integrate authentication and identity into your Web3 applications, getting acclimated with the MetaMask API is a great way to start learning the capabilities afforded to you working with the MetaMask Extension and learning your way around the Web3 stack in general.
 
 ## TOC
 
@@ -13,6 +13,7 @@ If you are planning to integrate identity and transactions into your Web3 applic
   - [Chainlist](#chainlist)
   - [Eserialize](#eserialize)
 - [Examples of Usage](#examples-of-usage)  
+- [Connecting to MetaMask Mobile with SDK](#connecting-to-metamask-mobile-with-sdk)
 - [Smart Contract Example](#smart-contract-example)  
 
 ## What is the MetaMask API?
@@ -318,6 +319,12 @@ export default ConnectNetwork
 ```
 
 The code above assumes that you are using some type of Context API component to track the wallet state and provide it to the components in your app, but if you are not using React you can focus on the try/catch portion of the code and modify it to fit your application.
+
+### Connecting to MetaMask Mobile with SDK
+
+If you would like to give your users the option of easily connecting to the MetaMask Extension or MetaMask Mobile (from various platforms) you should look into using the [MetaMask SDK](https://metamask.io/sdk/) where you can learn more and link to the docs. We have example applications in React and NextJS. The MetaMask SDK utilizes the MetaMask API behind the scenes and although is another topic, it's noteworthy to mention here.
+
+For an example of how to integrate the MetaMask SDK within a NextJS application check out our ["Getting Started" example](https://github.com/MetaMask/examples/tree/main/metamask-with/metamask-sdk-nextjs-pages-directory).
 
 ### Smart Contract Example
 
