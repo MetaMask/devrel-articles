@@ -26,7 +26,7 @@ We use this provider with our dapp to request users’ Ethereum accounts, read o
 
 We can tell in the developer tools when MetaMask is installed and enabled through the developer tools, using chrome you can look into the Sources/Page, and you will see an icon that represents MetaMask.
 
-![](./images/01-sources-page.png)
+![](./images/01-sources-page.png "Locating MetaMask in the Chrome DevTools Sources > Pages tab")
 
 Page is used for viewing available resources on the current webpage. 
 Under the Top level, we see the representation of the main document and all of its resources.
@@ -37,7 +37,7 @@ The `window.ethereum` object is being injected into the page, allowing us to int
 
 We can directly access and call the `window.ethereum` object in our developer tools console. Let’s say that we wanted to get the current chainId…
 
-![](./images/02-console-eth-chainid.png)
+![](./images/02-console-eth-chainid.png "Running MetaMask RPC calls as JavaScript in the DevTools Console")
 
 By running the code above in our console, and if we are currently connected to Polygon, we would see ‘0x89’ returned from this method call.
 
@@ -208,13 +208,13 @@ Below is an example using Chainlist, I can see Fantom Opera (mainnet), it's chai
 
 Eserialize is a tool that can serialize and deserialize the hex to string or number to hex or the other way around, below is an example of how to use it for something simple like verifying the chainId's hex string to the number listed on chainlist.org.
 
-![](./images/03-hex-to-number.png)
+![](./images/03-hex-to-number.png "Adding Fantom Opera network to MetaMask via Chainlist")
 
 ## Examples of Usage
 
 The MetaMask Playground lists JSON-RPC methods we support in our API.
 
-![](./images//04-api-playground.png)
+![](./images//04-api-playground.png "Comparing the converted hex chainId (Number) to the Chainlist chainId")
 
 The majority of the methods are prefixed with `wallet_` or `eth_`.
 
@@ -232,34 +232,33 @@ When you expand each method you have information about params and results and ea
 
 Here we are testing the eth_accounts method to obtain the connected account:
 
-![](./images/05-api-playground-example-a.png)
+![](./images/05-api-playground-example-a.png "List of MetaMask RPC APIs in MetaMask Playground")
 
 Next is an example calling `eth_chainId` which will return the current chainId of the network we are connected to:
 
-![](./images/07-api-playground-example-eth-chainid.png)
+![](./images/07-api-playground-example-eth-chainid.png "Calling eth_chainId in MetaMask Playground")
 
 Another widely used method is `wallet_addEthereumChain`
 
 This allows dapps to suggest chains to be added to the user’s wallet. 
 
-Just specify a chain ID and some chain metadata. 
-The wallet application may arbitrarily refuse or accept the request. `null` is returned if the chain was added, and errors otherwise. 
+Just specify a chainId and some chain metadata. The wallet application may arbitrarily refuse or accept the request. The value `null` is returned if the chain was added, and errors otherwise. 
 
 This API endpoint was introduced by [EIP 3085](https://eips.ethereum.org/EIPS/eip-3085).
 
-![](./images/08-api-playground-example-add-ethereum-chain.png)
+![](./images/08-api-playground-example-add-ethereum-chain.png "Calling wallet_addEthereumChain RPC API from MetaMask Playground")
 
 Here is what the user sees when adding a chain:
 
-![](./images/09-add-network-dialogue.png)
+![](./images/09-add-network-dialogue.png "Example of the user prompt from MetaMask when adding an Ethereum chain")
 
 This next API method switches its active Ethereum chain. Introduced by [EIP 3326](https://eips.ethereum.org/EIPS/eip-3326).
 
-![](./images/10-switch-ethereum-chain.png)
+![](./images/10-switch-ethereum-chain.png "Calling the wallet_switchEthereumChain RPC API from MetaMask Playground")
 
 The user will see a dialogue similar to the one below:
 
-![](./images/10-switch-ethereum-chain.png)
+![](./images/11-switch-chain-dialogue.png "Example of the user prompt from MetaMask when switching an Ethereum chain")
 
 NOTE: This method will throw an error if you do not have the chain that you are trying to switch to already added to the users wallet.
 
