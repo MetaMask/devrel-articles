@@ -24,7 +24,7 @@ Whenever we use a browser like Chrome, Firefox, or Brave and a wallet extension 
 
 We use this provider with our dapp to request users’ Ethereum accounts, read on-chain data and have the user sign messages and transactions.
 
-[Should we have a link to a docs page that describes what happens when multiple wallets are installed?]
+MetaMask API calls are defined with the JSON-RPC specs that [we will explain further](#what-is-json-rpc).
 
 We can tell in the developer tools when MetaMask is installed and enabled through the developer tools, using chrome you can look into the Sources/Page, and you will see an icon that represents MetaMask.
 
@@ -37,7 +37,7 @@ If we see MetaMask represented by a cloud icon here, we know that the MetaMask i
 
 The `window.ethereum` object is being injected into the page, allowing us to interact with MetaMask and Ethereum.
 
-We can directly access and call the `window.ethereum` object in our developer tools console. Let’s say that we wanted to get the current chainId…
+We can directly access and call the `window.ethereum` object in our developer tools console. Let’s say that we wanted to get the current chainId.
 
 ![](./images/02-console-eth-chainid.png "Running MetaMask RPC calls as JavaScript in the DevTools Console")
 
