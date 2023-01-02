@@ -59,7 +59,7 @@ You can learn more about the JSON RPC specification at [jsonrpc.org/specificatio
 
 ## A JSON RPC Request and Response Example
 
-Here we have a typical request and response in JSON format.
+Here we have a typical request and response in JSON format. The first example uses the `eth_chainId` RPC API method outlined in [EIP-695](https://eips.ethereum.org/EIPS/eip-695) which returns a single **STRING** result for an integer value in **hexadecimal** format, describing the currently configured `CHAIN_ID` value used for signing replay-protected transactions, introduced by [EIP-155](https://eips.ethereum.org/EIPS/eip-155).
 
 ### Request
 
