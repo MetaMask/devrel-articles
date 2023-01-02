@@ -14,7 +14,9 @@ If you are planning to integrate authentication and identity into your Web3 appl
   - [Eserialize](#eserialize)
 - [Examples of Usage](#examples-of-usage)  
 - [Connecting to MetaMask Mobile with SDK](#connecting-to-metamask-mobile-with-sdk)
-- [Smart Contract Example](#smart-contract-example)  
+- [Smart Contract Example](#smart-contract-example)
+
+This information within expands on my [fifteen minute talk from Chainlink SmartCon 2022](https://www.youtube.com/watch?v=cMZkwMs_8i4) conference in New York City.
 
 ## What is the MetaMask API?
 
@@ -381,6 +383,7 @@ const MintingPage = ({nft}) => {
   }
 }
 ```
+
 We use the `await` keyword to wait for the transaction to be mined on the blockchain before continuing with the execution of the code.
 
 the `.then` and `.catch` syntax is used to handle the result of the transaction. If the transaction is successful, the `.then` block will be executed. If the transaction fails, the `.catch` block will be executed, and the component's state will be updated with an error message.
