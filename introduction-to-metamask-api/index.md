@@ -18,7 +18,7 @@ If you are planning to integrate authentication and identity into your Web3 appl
 
 ## What is the MetaMask API?
 
-Whenever we use a browser like Chrome, Firefox, or Brave and a wallet extension like MetaMask installed, we can use the Ethereum provider (as specified by EIP-1193) injected into the browser page at `window.ethereum`.
+Whenever we use a browser like Chrome, Firefox, or Brave and a wallet extension like MetaMask is installed, we can use the Ethereum provider (as specified by [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193)) injected into the browser page at `window.ethereum`. Historically, Provider implementations exhibit conflicting interfaces and behaviors between wallets. This EIP formalizes an Ethereum Provider API to promote wallet interoperability.
 
 We use this provider with our dapp to request users’ Ethereum accounts, read on-chain data and have the user sign messages and transactions.
 
