@@ -16,7 +16,7 @@ If you are planning to integrate authentication and identity into your Web3 appl
 - [Connecting to MetaMask Mobile with SDK](#connecting-to-metamask-mobile-with-sdk)
 - [Smart Contract Example](#smart-contract-example)
 
-This information within expands on my [fifteen minute talk from Chainlink SmartCon 2022](https://www.youtube.com/watch?v=cMZkwMs_8i4) conference in New York City.
+This information within expands on my [fifteen minute talk from Chainlink SmartCon 2022](https://www.youtube.com/watch?v=cMZkwMs_8i4) conference in New York City. The purpose of this article is to get you ramped up with using the MetaMask API as quickly as possible and is an estimated 15 minute read.
 
 ## What is the MetaMask API?
 
