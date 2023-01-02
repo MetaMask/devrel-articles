@@ -200,7 +200,7 @@ You can add and switch to any chain in the list when MetaMask confirmation pops 
 
 Below is an example using Chainlist, I can see Fantom Opera (mainnet), it's chainId and I can add to MetaMask and in the confirmation see the information used to add the network to my wallet.
 
-![](./images//15-chainlist.png)
+![](./images//15-chainlist.png "Adding a Network to MetaMask on ChainList")
 
 ### Eserialize
 
