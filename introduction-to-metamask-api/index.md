@@ -266,7 +266,7 @@ NOTE: This method will throw an error if you do not have the chain that you are 
 
 For this reason, when we want to switch the user to another chain in the Dapp, we can combine the `wallet_addEthereumChain` and `wallet_switchEthereumChain` methods in a try / catch.
 
-Let's take a look at the code yu might write in order to add/switch the Ethereum chain to Polygon Mainnet in a React component:
+Let's take a look at how to add/switch the Ethereum chain to Polygon Mainnet in a React component:
 
 ```javascript
 import { useContext } from 'react'
