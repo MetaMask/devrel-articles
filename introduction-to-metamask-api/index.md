@@ -202,7 +202,7 @@ You can add and switch to any chain in the list when MetaMask confirmation pops 
 
 Below is an example using Chainlist, I can see Fantom Opera (mainnet), it's chainId and I can add to MetaMask and in the confirmation see the information used to add the network to my wallet.
 
-![](./images//15-chainlist.png "Adding a Network to MetaMask on ChainList")
+![](./images//12-chainlist.png "Adding a Network to MetaMask on ChainList")
 
 ### Eserialize
 
@@ -232,9 +232,9 @@ The following examples use the MetaMask API playground
 
 When you expand each method you have information about params and results and each method example can be inspected and run in the browser. 
 
-Here we are testing the eth_accounts method to obtain the connected account:
+Here we are testing the `eth_accounts` method to obtain the connected account:
 
-![](./images/05-api-playground-example-a.png "List of MetaMask RPC APIs in MetaMask Playground")
+![](./images/06-api-playground-example-eth-accounts.png "List of MetaMask RPC APIs in MetaMask Playground")
 
 Next is an example calling `eth_chainId` which will return the current chainId of the network we are connected to:
 
