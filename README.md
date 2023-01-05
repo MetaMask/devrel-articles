@@ -7,6 +7,9 @@
 - Create a branch using the same kebab-case title
 - Write your article and use a PR to get reviews and feedback from team members
 - Once the article is finalized merge it into `main`
+- Establish where the article will be published
+  - Upload images needed for the article to cloudinary using your consensys email to our team account
+  - Replace images in the publsihed markdown using cloudinary assets
 
 ## Example of a single page article and directory structure:
 
