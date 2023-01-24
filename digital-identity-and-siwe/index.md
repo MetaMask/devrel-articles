@@ -60,18 +60,20 @@ With SIWE, users would create an Ethereum address and private key specifically f
 
 SIWE affects digital identity by:
 
-- Allowing individuals to use their Ethereum address as a way to authenticate on web3 applications.
-- Eliminating the need for complexe passwords and usernames.
-- Allowing users to use their Ethereum address as a decentralized identity across different web3 applications.
-- Enabling web3 applications to authenticate and authorize users without the need for centralized identity providers, such as social media login or email and password, which could lead to more privacy and security for the user.
+- Allowing individuals to use their Ethereum address as a way to authenticate on web3 applications
+- Eliminating the need for complexe passwords and usernames
+- Allowing users to use their Ethereum address as a decentralized identity across different web3 applications
+- Enabling web3 applications to authenticate and authorize users without the need for centralized identity providers 
+   - such as social media login or email and password, which could lead to more privacy and security for the user
+   
 
 The idea behind the proposal is to standardize the way you authenticate with a digital identity. The following steps are followed:
 
-- A server creates a unique number called a Nonce for each user that will sign-in.
-- A user requests to connect a site with their wallet.
-- The user is presented with a unique message that indicates the Nonce and information about the website.
-- The user signs in with their wallet.
-- The user is then authenticated and the website is given access to data about the user that was approved.
+- A server creates a unique number called a Nonce for each user that will sign-in
+- A user requests to connect a site with their wallet
+- The user is presented with a unique message that indicates the Nonce and information about the website
+- The user signs in with their wallet
+- The user is then authenticated and the website is given access to data about the user that was approved
 
 MetaMask is a popular tool and a browser extension that allows users to interact with the Ethereum blockchain and can be used to implement digital identity and SIWE. MetaMask can be used to create and manage Ethereum addresses, which can be used as a digital identity on web3 platforms and dApps.
 
@@ -84,10 +86,10 @@ As mentioned above, we will need to generate a unique number called a Nonce; sin
 We will be starting from a basic Next.js application created with [`create-next-app`](create-next-app), and we will use the following
 libraries:
 
-- [`@metamask/providers`](https://www.npmjs.com/package/@metamask/providers) - A library for interacting containing TypeScript types for the MetaMask provider API.
-- [`ethers`](https://www.npmjs.com/package/ethers) - A library containing different utilities for interacting with the Ethereum blockchain.
-- [`siwe`](https://www.npmjs.com/package/siwe) - A library containing utilities for implementing Sign In With Ethereum.
-- [`iron-session`](https://www.npmjs.com/package/iron-session) - A library for implementing session management in Next.js applications.
+- [`@metamask/providers`](https://www.npmjs.com/package/@metamask/providers) - A library for interacting containing TypeScript types for the MetaMask provider API
+- [`ethers`](https://www.npmjs.com/package/ethers) - A library containing different utilities for interacting with the Ethereum blockchain
+- [`siwe`](https://www.npmjs.com/package/siwe) - A library containing utilities for implementing Sign In With Ethereum
+- [`iron-session`](https://www.npmjs.com/package/iron-session) - A library for implementing session management in Next.js applications
 
 **N.B. The complete code is [available here](https://github.com/MetaMask/examples/tree/main/examples/metamask-siwe).**
 
