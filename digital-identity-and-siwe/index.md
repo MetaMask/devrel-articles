@@ -60,8 +60,8 @@ With SIWE, users would create an Ethereum address and private key specifically f
 
 SIWE affects digital identity by:
 
-- Allowing individuals to use their Ethereum address and private key as a decentralized and self-sovereign way to authenticate and authorize themselves on web3 applications.
-- Eliminating the need for users to create and remember separate login credentials for each web3 application they use.
+- Allowing individuals to use their Ethereum address as a way to authenticate on web3 applications.
+- Eliminating the need for complexe passwords and usernames.
 - Allowing users to use their Ethereum address as a decentralized identity across different web3 applications.
 - Enabling web3 applications to authenticate and authorize users without the need for centralized identity providers, such as social media login or email and password, which could lead to more privacy and security for the user.
 
