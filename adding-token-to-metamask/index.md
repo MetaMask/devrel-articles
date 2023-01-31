@@ -81,7 +81,7 @@ export const Button = () => {
 };
 ```
 
-As you can see, adding a token to MetaMask is as simple as calling the `wallet_watchAsset` RPC method. This method returns a promise that resolves to a boolean. If the user accepts the request, the promise will resolve to `true`. If the user rejects the request, the promise will resolve to `false`.
+As you can see, adding a token to MetaMask is as simple as calling the `wallet_watchAsset` RPC method. This method returns a promise that resolves to a boolean. If the user accepts the request, the promise will resolve to `true`. If the user rejects the request, the promise will resolve to `false.`
 
 ## Conclusion
 
