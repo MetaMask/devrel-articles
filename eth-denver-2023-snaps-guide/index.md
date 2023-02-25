@@ -16,7 +16,7 @@ __*As well you can join our MetaMask [Snaps Developer Discord](https://discord.c
 - [Bounties](#bounties)
 - [Example Snaps](#example-snaps)
 - [Truffle Suite Integration](#truffle-suite-integration)
-- [Articles on L2s and Non EVM Compatibility](#articles-on-l2s-and-Non-evm-compatibility)
+- [Articles on L2s and Non EVM Compatibility](#articles-on-l2s-and-non-evm-compatibility)
 
 ## Before You Start
 
