@@ -371,7 +371,7 @@ const MintingPage = ({nft}) => {
     })
     .then(async(tx) => {
       await tx.await()
-      console.lgo(`minting complete, mined: ${tx}`)
+      console.log(`minting complete, mined: ${tx}`)
       setIsMinting(false)
     })
     .catch((error) => {
